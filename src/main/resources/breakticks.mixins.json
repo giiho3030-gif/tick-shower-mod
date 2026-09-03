@@ -1,0 +1,12 @@
+{
+	"required": true,
+	"package": "net.gif.breakticks.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"BreakingAccessor",
+		"MultiPlayerGameModeFaceMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

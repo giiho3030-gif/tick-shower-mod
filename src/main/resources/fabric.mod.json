@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "breakticks",
+	"version": "${version}",
+	"name": "Break Ticks",
+	"description": "Paints the break progress of the block you are mining (\"12/45t\") flat onto the exact face you are hitting, on top of the vanilla crack overlay. Client-side only.",
+	"authors": [
+		"giiho3030-gif"
+	],
+	"contact": {
+		"sources": "https://github.com/giiho3030-gif/tick-shower-mod"
+	},
+	"license": "CC0-1.0",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"net.gif.breakticks.BreakTicksMod"
+		]
+	},
+	"mixins": [
+		"breakticks.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"fabric-api": "*",
+		"minecraft": "~26.2",
+		"java": ">=25"
+	}
+}

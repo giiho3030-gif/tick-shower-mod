@@ -1,0 +1,39 @@
+// Break Ticks - minimal client-only Fabric mod build.
+// No mappings line on purpose: Loom 1.17 uses Mojang's official mappings for
+// "com.mojang:minecraft:<version>" out of the box (same as the official 26.2 template mod).
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+base {
+	archivesName = project.base_name
+}
+
+repositories {
+	// Loom adds everything needed for Minecraft + Fabric automatically.
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+// Bake the version into fabric.mod.json (it contains ${version}).
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
